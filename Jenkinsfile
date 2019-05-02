@@ -54,7 +54,6 @@ pipeline {
             }
         }
         
-            
         stage('DeployToProduction') {
             when {
                 branch 'master'
@@ -67,7 +66,7 @@ pipeline {
                 milestone(1)
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
-                    configs: 'train-schedule-kube.canary.yml',
+                    configs: 'train-schedule-kube-canary.yml',
                     enableConfigSubstitution: true
                 )
                 kubernetesDeploy(
@@ -76,5 +75,5 @@ pipeline {
                     enableConfigSubstitution: true
             )
         }
-    }
-}
+    
+
